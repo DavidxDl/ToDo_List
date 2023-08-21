@@ -14,7 +14,7 @@
             </div>
         </div>
     </header>
-    <div class="my-container container-xl  mx-auto">
+    <div class="my-container container-xl mx-auto">
         <div class="content">
             <main>
                 <div class="notes">
@@ -52,13 +52,21 @@
                     </div>
                     <div class="card note bg-dark text-white">
                         <img src="../src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg" class="card-img" alt="...">
-                        <div class="card-img-overlay">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <form name="title" id="title"  class="card-img-overlay">
+                          <input id="noteTitle" class="card-title" placeholder="Title" type="text">
+                          <textarea class="card-text form-control" aria-label="With textarea" type="text" placeholder="description" id="noteInfo" name="noteDescription"></textarea>
                           <p class="card-text">Last updated 3 mins ago</p>
                         </div>
                     </div>
                 </div>
+                <div class="dropdown">
+                    <button class="btn  btn-primary dropdown-toggle" id="addBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="addIcon" src="../src/imgs/plus-svgrepo-com (1).svg" alt=""></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a id="addNote" class="dropdown-item" href="#">Add Note</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                  </div>
             </main>
 
         </div>
