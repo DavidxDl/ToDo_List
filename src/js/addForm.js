@@ -31,9 +31,14 @@ export default function AddForm(){
     textarea.placeholder = "Description"
     textarea.id = "noteInfo"
     textarea.name = "noteDescription"
+    const button = document.createElement("button")
+    button.innerText = "Add Note"
+    button.classList.add("btn")
+    button.classList.add("btn-primary")
 
 
-    form.append(titleInput, textarea)
+
+    form.append(titleInput, textarea,button)
     note.append(img, form)
     notes.append(note)
 
