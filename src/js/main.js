@@ -1,5 +1,6 @@
 // Import our custom CSS
-import '../scss/styles.scss'
+import '/src/scss/styles.scss'
+import '/src/scss/style.css'
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
 import AddForm from './addForm'
