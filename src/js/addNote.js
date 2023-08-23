@@ -1,3 +1,4 @@
+import noteImage from "../imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
 
 export default function AddNote(title, description, priority, date){
     const notes = document.querySelector(".notes");
@@ -10,7 +11,7 @@ export default function AddNote(title, description, priority, date){
 
     const img = document.createElement("img");
     img.classList.add("card-img");
-    img.src = "../src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
+    img.src = noteImage;
 
     const priorityColor = document.createElement("div");
     priorityColor.classList.add("priority-bar");

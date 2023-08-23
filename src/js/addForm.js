@@ -2,6 +2,8 @@ import { format } from "date-fns";
 import AddNote from "./addNote"
 import { noteList } from "./main";
 import Note from "./TodoNoteClass"; 
+import noteImage from "../imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
+
 
 export default function AddForm(){
     if(document.querySelector("form") != null)return
@@ -15,7 +17,7 @@ export default function AddForm(){
     note.classList.add("text-white")
 
     const img = document.createElement("img")
-    img.src = "../src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
+    img.src = noteImage;
     img.classList.add("card-img")
 
     const form = document.createElement("form")
