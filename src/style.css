@@ -24,8 +24,8 @@ main{
 .my-container{
     padding:0;
     min-height: 100vh;
-    background-color:#c8ede0;
-    box-shadow:inset 3px 9px 5px 0px  rgb(136 192 104);
+    background-color:#ffffff;
+    
 }
 
 .header{
@@ -35,6 +35,9 @@ main{
     justify-content: center;
     align-items: center;
     background: rgb(225, 241, 1);
+    box-shadow: 2px 2px 10px black;
+    margin-bottom: 14px;
+    
 
 }
 #logoText{
@@ -48,16 +51,26 @@ main{
     flex-wrap: wrap;
     gap:10px;
     justify-content: center;
+    
 }
 .note{
+    font-family: 'Roboto', sans-serif;
+    position:relative;
     border: 0px;
     color:white;
     width: 250px;
     height: auto;
     text-align: center;
-    box-shadow: 2px 2px 3px #55aa49;
+    box-shadow: 1px 2px 4px 0px #000000;
     text-shadow: 1px 2px 8px black;
    
+}
+.card img::before{
+    content: '';
+    height: 100%;
+    width: 2px;
+    background: black;
+    right: 10;
 }
 .card-title{
     text-shadow: none;
@@ -65,11 +78,20 @@ main{
 }
 .card img{
     height: 300px;
+
 }
 .card-img-overlay{
+    height:300px;
     
-    height:300px
 
+}
+.priority-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px; /* Adjust the width of the priority bar */
+    height: 100%;
+    background-color: red; /* Adjust the color of the priority bar */
 }
 #addBtn{
     position: fixed;
@@ -77,7 +99,7 @@ main{
     right: 0px;
     border-radius: 50%;
     padding: 5px;
-    background-color:#c8ede0 ;
+    background-color:transparent ;
     border: 0;
 }
 #addBtn:hover{
@@ -106,3 +128,9 @@ main{
     background-color: rgba(0, 0, 0, 0.164);
 }
 
+.formLabelNote{
+    font-family: 'Roboto', sans-serif;
+}
+.headerLabel{
+    font-size: 23px;
+}
