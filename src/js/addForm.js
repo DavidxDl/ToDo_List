@@ -52,16 +52,12 @@ export default function AddForm(){
     const button = createButton("Add Note")
 
     button.addEventListener("click", () =>{
-        let today = new Date();
-        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        let time = today.getHours() + ":" + today.getMinutes();
-        let dateTime = date+' '+ time;
-
         const priority = document.querySelector('input[name="priority"]:checked').value;
-        AddNote(titleInput.value, textarea.value, priority, dateTime);
+        AddNote(titleInput.value, textarea.value, priority, getTime());
         notes.removeChild(note);
-        const newNote = new Note(titleInput.value, textarea.value, priority);
+        const newNote = new Note(titleInput.value, textarea.value, priority, getTime());
         noteList.push(newNote);
+        localStorage.setItem("NoteList", JSON.stringify(noteList))
         console.log(noteList);
     })
 
@@ -82,6 +78,13 @@ export default function AddForm(){
     notes.prepend(note)
 
 }
+
+export function getTime(){
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes();
+    return date +' '+ time;
+} 
 
 function createInput(type, id, placeholder = '', value= '')
 {

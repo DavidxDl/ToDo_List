@@ -2,16 +2,27 @@
 import '../scss/styles.scss'
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
-import AddNote from './addNote'
 import AddForm from './addForm'
-import Note from './TodoNoteClass'
+import RenderNotes from './CheckStorage'
 
 const notes = document.querySelector(".notes")
 const addNoteBtn = document.getElementById("addNote")
 
 export let noteList = [];
-noteList[0] = new Note("Habibi", "habibibibibi", "red");
-console.log(noteList);
+RenderNotes();
+/* if(!localStorage.getItem("NoteList"))
+{
+    localStorage.setItem("NoteList", JSON.stringify(noteList))
+}
+else{
+    noteList = JSON.parse(localStorage.getItem("NoteList"));
+}
+
+notes.innerHTML = '';
+
+noteList.forEach(note => {
+    AddNote(note.title, note.info, note.priority, note.time);
+}) */
 
 
 addNoteBtn.addEventListener("click", AddForm)
