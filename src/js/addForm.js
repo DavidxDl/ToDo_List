@@ -29,25 +29,22 @@ export default function AddForm(){
     
     const textarea = createTextarea('noteInfo', 'Description')
     
-
     const headerLabel = createLabel("Priority", "headerLabel");
     
+    const wrap = document.createElement("div");
+    wrap.classList.add("formWrap");
 
     const br = document.createElement("br");
 
     const radio1 = createRadioButton("priority","highPriority","red");
     
-
     const label1 = createLabel("high","formLabelNote");
 
     const radio2 = createRadioButton("priority","highPriority","yellow");
 
-
     const label2 = createLabel("mid","formLabelNote")
 
-
     const radio3 = createRadioButton("priority","highPriority","blue");
-
 
     const label3 = createLabel("low", "formLabelNote")
 
@@ -65,15 +62,18 @@ export default function AddForm(){
 
     
 
-    form.append(
-        titleInput,
-        textarea,
-        headerLabel, br,
+    wrap.append(
         radio1, label1,
         radio2, label2,
         radio3, label3,
         br, button
+    )
+    form.append(
+        titleInput,
+        textarea,
+        headerLabel, wrap
         )
+
 
     note.append(img, form
         )

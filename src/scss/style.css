@@ -63,6 +63,7 @@ main{
     text-align: center;
     box-shadow: 1px 2px 4px 0px #000000;
     text-shadow: 1px 2px 8px black;
+    
    
 }
 .card img::before{
@@ -82,6 +83,9 @@ main{
 }
 .card-img-overlay{
     height:300px;
+    display: flex;
+    flex-direction: column;
+    
     
 
 }
@@ -95,7 +99,7 @@ main{
 }
 #addBtn{
     position: fixed;
-    top:551px;
+    bottom: 0px;
     right: 0px;
     border-radius: 50%;
     padding: 5px;
@@ -103,7 +107,7 @@ main{
     border: 0;
 }
 #addBtn:hover{
-    top: 540px;
+    bottom: 10px;
     transition: 0.09s;
 }
 .addIcon{
@@ -115,6 +119,10 @@ main{
     width: 210px;
     border: none;
     background-color: rgba(0, 0, 0, 0.185);
+    border-radius: 6px;
+}
+.time{
+    margin-top: auto;
 }
 #noteInfo{
     color: white;
@@ -133,4 +141,5 @@ main{
 }
 .headerLabel{
     font-size: 23px;
+    display:block;
 }
