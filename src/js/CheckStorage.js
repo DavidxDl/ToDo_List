@@ -3,6 +3,7 @@ import AddNote from "./addNote";
 
 
 
+
 export default function RenderNotes()
 {
     const notes = document.querySelector(".notes")
