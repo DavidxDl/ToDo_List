@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import AddNote from "./addNote"
 import { noteList } from "./main";
 import Note from "./TodoNoteClass"; 
-import noteImage from "../imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
+import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
 
 
 export default function AddForm(){

@@ -1,4 +1,4 @@
-import noteImage from "../imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
+import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
 
 export default function AddNote(title, description, priority, date){
     const notes = document.querySelector(".notes");
