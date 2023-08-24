@@ -5,7 +5,7 @@ import buttonIcon from '../imgs/plus-svgrepo-com (1).svg' ;
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap';
 import AddForm from './addForm';
-import RenderNotes from './CheckStorage';
+import RenderNotes from './RenderNotes';
 import AddNote from './addNote';
 import Note from './TodoNoteClass';
 
