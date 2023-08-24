@@ -6,10 +6,8 @@ export default function AddNote(title, description, priority, date){
     const notes = document.querySelector(".notes");
     
     const note = document.createElement("div");
-    note.classList.add("card");
-    note.classList.add("note");
-    note.classList.add("bg-dark");
-    note.classList.add("text-white");
+    note.id = "note";
+    note.classList.add("card", "note", "bg-dark", "text-white");
 
     const img = document.createElement("img");
     img.classList.add("card-img");
@@ -27,7 +25,7 @@ export default function AddNote(title, description, priority, date){
     h5.innerHTML = title;
 
     const text = document.createElement("p");
-    text.classList.add("card-text");
+    text.classList.add("card-text", "overflow-y-auto");
     text.innerHTML = description;
 
     const timeHeader = document.createElement("h4");
@@ -36,8 +34,10 @@ export default function AddNote(title, description, priority, date){
     const time = document.createElement("p");
     time.classList.add("time");
     time.innerText = date;
+
     const removeBtn = document.createElement("button");
-    removeBtn.classList.add("removeBtn")
+    removeBtn.id = "removeBtn";
+    removeBtn.classList.add("btn", "btn-primary")
     removeBtn.innerText = "remove"
 
     removeBtn.addEventListener("click", ()=>{
