@@ -1,8 +1,10 @@
 import { format } from "date-fns";
-import AddNote from "./addNote"
+import AddNote from "./addNote";
+import { AddNoteToArray } from "./addNote";
 import { noteList } from "./main";
 import Note from "./TodoNoteClass"; 
 import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
+import { validate } from "uuid";
 
 
 export default function AddForm(){
@@ -10,11 +12,11 @@ export default function AddForm(){
 
     const notes = document.querySelector(".notes")
 
-    const note = document.createElement("div")
-    note.classList.add("card")
-    note.classList.add("note")
-    note.classList.add("bg-dark")
-    note.classList.add("text-white")
+    const formNote = document.createElement("div")
+    formNote.classList.add("card")
+    formNote.classList.add("note")
+    formNote.classList.add("bg-dark")
+    formNote.classList.add("text-white")
 
     const img = document.createElement("img")
     img.src = noteImage;
@@ -25,9 +27,12 @@ export default function AddForm(){
     form.id = "title"
     form.classList.add("card-img-overlay")
 
-    const titleInput = createInput("text", "noteTitle", "Title")
+    const titleInput = createInput("text", "noteTitle", "Title");
     
-    const textarea = createTextarea('noteInfo', 'Description')
+    const textarea = createTextarea('noteInfo', 'Description');
+    textarea.required = true;
+    ValidateInput(textarea);
+    textarea.addEventListener("input", () => ValidateInput(textarea)) ;
     
     const headerLabel = createLabel("Priority", "headerLabel");
     
@@ -46,17 +51,18 @@ export default function AddForm(){
 
     const radio3 = createRadioButton("priority","highPriority","blue");
 
-    const label3 = createLabel("low", "formLabelNote")
+    const label3 = createLabel("low", "formLabelNote");
 
-    const button = createButton("Add Note")
+    const addBtn = createButton("Add Note");
+    addBtn.type = "submit";
 
-    button.addEventListener("click", () =>{
-        const priority = document.querySelector('input[name="priority"]:checked').value;
-        AddNote(titleInput.value, textarea.value, priority, getTime());
-        notes.removeChild(note);
-        const newNote = new Note(titleInput.value, textarea.value, priority, getTime());
-        noteList.push(newNote);
-        localStorage.setItem("NoteList", JSON.stringify(noteList))
+    addBtn.addEventListener("click", () =>{
+        if(textarea.value === '') return;
+
+        let priority = document.querySelector('input[name="priority"]:checked')?.value || "blue";
+        let id = AddNoteToArray(titleInput.value, textarea.value, priority);
+        AddNote(titleInput.value, textarea.value, priority, getTime(), id);
+        notes.removeChild(formNote);
         console.log(noteList);
     })
 
@@ -66,18 +72,19 @@ export default function AddForm(){
         radio1, label1,
         radio2, label2,
         radio3, label3,
-        br, button
+        br
     )
     form.append(
         titleInput,
         textarea,
-        headerLabel, wrap
+        headerLabel, wrap,
+        addBtn
         )
 
 
-    note.append(img, form
+    formNote.append(img, form
         )
-    notes.prepend(note)
+    notes.prepend(formNote)
 
 }
 
@@ -87,6 +94,25 @@ export function getTime(){
     let time = today.getHours() + ":" + today.getMinutes();
     return date +' '+ time;
 } 
+
+function notify(message)
+{
+    alert(message);
+}
+
+function ValidateInput(title)
+{
+    if (title.value === '')
+    {
+        title.setCustomValidity("There's not Text");
+        title.style.border = "1px solid red";
+    }
+    else
+    {
+        title.setCustomValidity("");
+        title.style.border = "1px solid yellow";
+    }
+}
 
 function createInput(type, id, placeholder = '', value= '')
 {
