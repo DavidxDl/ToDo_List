@@ -113,7 +113,7 @@ main{
     height: auto;
     text-align: center;
     box-shadow: 1px 2px 4px 0px #000000;
-    text-shadow: 1px 2px 8px black;
+    text-shadow: -1px 2px 5px black;
     
    
 }
