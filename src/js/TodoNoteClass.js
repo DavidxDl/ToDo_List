@@ -8,11 +8,9 @@ export default class Note {
         this.info = info;
         this.priority = priority;
         this.time = time;
-        this._id = uuidv4()
+        this.id = uuidv4()
     }
+    //wtf
 
-    get id(){
-        return this._id;
-    }
-
+    
 }

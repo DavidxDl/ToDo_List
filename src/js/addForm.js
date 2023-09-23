@@ -1,10 +1,20 @@
-import { format } from "date-fns";
+import { AddNoteToArray, UpdateLocalStorage} from "./addNote";
 import AddNote from "./addNote";
-import { AddNoteToArray } from "./addNote";
 import { noteList } from "./main";
-import Note from "./TodoNoteClass"; 
 import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
-import { validate } from "uuid";
+import EditNote from "./EditNote";
+import RenderNotes from "./RenderNotes"; // gege
+
+/* addBtn.addEventListener("click", () =>{
+    if(textarea.value === '') return;
+
+    let priority = document.querySelector('input[name="priority"]:checked')?.value || "blue";
+    let id = AddNoteToArray(titleInput.value, textarea.value, priority);
+    AddNote(titleInput.value, textarea.value, priority, getTime(), id);
+    notes.removeChild(formNote);
+    console.log(noteList);
+
+}) */
 
 
 export default function AddForm(){
@@ -32,7 +42,7 @@ export default function AddForm(){
     const textarea = createTextarea('noteInfo', 'Description');
     textarea.required = true;
     ValidateInput(textarea);
-    textarea.addEventListener("input", () => ValidateInput(textarea)) ;
+    textarea.addEventListener("input", () => ValidateInput(textarea));
     
     const headerLabel = createLabel("Priority", "headerLabel");
     
@@ -56,7 +66,7 @@ export default function AddForm(){
     const addBtn = createButton("Add Note");
     addBtn.type = "submit";
 
-    addBtn.addEventListener("click", () =>{
+    /* addBtn.addEventListener("click", () =>{
         if(textarea.value === '') return;
 
         let priority = document.querySelector('input[name="priority"]:checked')?.value || "blue";
@@ -64,7 +74,8 @@ export default function AddForm(){
         AddNote(titleInput.value, textarea.value, priority, getTime(), id);
         notes.removeChild(formNote);
         console.log(noteList);
-    })
+  
+    }) */
 
     
 
@@ -86,6 +97,13 @@ export default function AddForm(){
         )
     notes.prepend(formNote)
 
+    return{
+        formNote,
+        titleInput,
+        textarea,
+        addBtn
+    }
+
 }
 
 export function getTime(){
@@ -100,7 +118,7 @@ function notify(message)
     alert(message);
 }
 
-function ValidateInput(title)
+export function ValidateInput(title)
 {
     if (title.value === '')
     {
@@ -114,18 +132,17 @@ function ValidateInput(title)
     }
 }
 
-function createInput(type, id, placeholder = '', value= '')
+export function createInput(type, id, placeholder = '')
 {
     const input = document.createElement("input");
     input.type = type;
     input.id = id;
     input.placeholder = placeholder;
-    input.value = value;
 
     return input;
 }
 
-function createTextarea(id, placeholder = "", name="")
+export function createTextarea(id, placeholder = "", name="")
 {
     const textarea = document.createElement("textarea");
     textarea.classList.add("card-text")
@@ -137,7 +154,7 @@ function createTextarea(id, placeholder = "", name="")
     return textarea;
 }
 
-function createLabel(text, Class='')
+export function createLabel(text, Class='')
 {
     const label = document.createElement("label");
     label.classList.add(Class);
@@ -146,7 +163,7 @@ function createLabel(text, Class='')
     return label;
 }
 
-function createRadioButton(name, id, value)
+export function createRadioButton(name, id, value)
 {
     const radio = document.createElement("input");
     radio.type = "radio";
@@ -157,7 +174,7 @@ function createRadioButton(name, id, value)
     return radio;
 }
 
-function createButton(text)
+export function createButton(text)
 {
     const button = document.createElement("button");
     button.innerText = text;

@@ -16,8 +16,11 @@ export default function RenderNotes()
     }
     
     notes.innerHTML = '';
-    
+    console.log(noteList);
+
     noteList.forEach(note => {
+        console.log(note)
+        console.log(note.id, note.info, note.priority)
         AddNote(note.title, note.info, note.priority, note.time, note.id);
     })
 }
