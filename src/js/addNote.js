@@ -63,7 +63,8 @@ export default function AddNoteToDom(title, description, priority="blue", date, 
 
 export function AddNoteToArray(title, description, priority, projectName)
 {
-    ProjectArray = JSON.parse(localStorage.getItem(projectName));
+    let projectArray = []
+    projectArray = JSON.parse(localStorage.getItem(projectName));
     const note = new Note(title, description, priority, getTime());
     projectArray.push(note);
     UpdateLocalStorage(projectName, projectArray);
