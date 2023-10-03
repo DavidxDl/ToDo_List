@@ -4,6 +4,8 @@ import { currentProject, projectsList } from "./main";
 
 export function createProjectForm()
 {
+    if(document.querySelector(".projectForm") != null)return
+
     const projects = document.querySelector(".Projects");
 
     const form = document.createElement("form")
@@ -15,23 +17,17 @@ export function createProjectForm()
 
     form.append(projectNameInput, submitProject)
 
-    projects.append(form)
+    projects.prepend(form)
 
 
     submitProject.addEventListener("click", (e) =>{
         e.preventDefault()
 
-        const projectAncher = document.createElement("a")
-        projectAncher.innerText = projectNameInput.value
-        projectAncher.classList.add("projectItem") 
-        projectAncher.id = projectNameInput.value
-        projectAncher.href = "#"
-
-        projects.append(projectAncher)
         projects.removeChild(form)
 
         projectsList.push(projectNameInput.value)
         localStorage.setItem("Projects", JSON.stringify(projectsList))
+        RenderProjects()
     })
 
 }
