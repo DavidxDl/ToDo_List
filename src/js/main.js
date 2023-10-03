@@ -11,11 +11,13 @@ import RenderNotes from './RenderNotes';
 import AddNoteToDom from './addNote';
 import { AddNoteToArray } from './addNote';
 import { getTime } from './addForm';
+import { createProjectForm } from './projects';
 
 
 document.querySelector(".addIcon").src = buttonIcon;
 const notes = document.querySelector(".notes")
 
+const newProjectBtn = document.querySelector(".newProjectBtn")
 const addNoteBtn = document.getElementById("addNote")
 const modal = document.querySelector("[data-modal")
 const closeModalBtn = document.querySelector("[data-close-modal]")
@@ -39,7 +41,7 @@ addNoteBtn.addEventListener("click", (e) =>
         if(form.textarea.value === '') return;
 
         let priority = document.querySelector('input[name="priority"]:checked')?.value || "blue";
-        let id = AddNoteToArray(form.titleInput.value, form.textarea.value, priority, "defaultProject", defaultProject);
+        let id = AddNoteToArray(form.titleInput.value, form.textarea.value, priority, "defaultProject");
         AddNoteToDom(form.titleInput.value, form.textarea.value, priority, getTime(), id);
         notes.removeChild(form.formNote);
         console.log(defaultProject);
@@ -59,4 +61,8 @@ defaultProjectBtn.addEventListener("click", () => {
     modal.close();
     RenderNotes("defaultProject");
 })
+
+newProjectBtn.addEventListener("click", createProjectForm)
+
+
                                                         
