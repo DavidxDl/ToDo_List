@@ -1,7 +1,7 @@
 import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg";
 import imgRemoveIcon from "/src/imgs/remove.png";
 import imgEditIcon from "/src/imgs/EditIcon.png";
-import { noteList } from "./main";
+import { defaultProject } from "./main";
 import RenderNotes from "./RenderNotes";
 import Note from "./TodoNoteClass";
 import AddForm, { getTime } from "./addForm";
@@ -9,7 +9,7 @@ import EditNote, { EditForm } from "./EditNote";
 
 
 
-export default function AddNote(title, description, priority="blue", date, id){
+export default function AddNoteToDom(title, description, priority="blue", date, id){
     const notes = document.querySelector(".notes");
     
     const note = document.createElement("div");
@@ -61,11 +61,11 @@ export default function AddNote(title, description, priority="blue", date, id){
     notes.prepend(note);
 }
 
-export function AddNoteToArray(title, description, priority)
+export function AddNoteToArray(title, description, priority, projectName, projectArray)
 {
     const note = new Note(title, description, priority, getTime());
-    noteList.push(note);
-    UpdateLocalStorage();
+    defaultProject.push(note);
+    UpdateLocalStorage(projectName, projectArray);
     console.log(note.id)
     return note.id;
 }
@@ -78,9 +78,9 @@ function CreateIcon(id, clss, src, btn){
     btn.append(icon);
 }
 
-export function UpdateLocalStorage()
+export function UpdateLocalStorage(projectName = "defaultProject", projectArray = defaultProject)
 {
-    localStorage.setItem("NoteList", JSON.stringify(noteList));
+    localStorage.setItem(projectName, JSON.stringify(projectArray));
 }
 
 function CreateButton(id, clss)
@@ -103,10 +103,10 @@ function RemoveAndUpdate(id)
         {
             notes.removeChild(note);
     
-            const noteIndex = noteList.findIndex(nodeNote => nodeNote.id === id);
+            const noteIndex = defaultProject.findIndex(nodeNote => nodeNote.id === id);
             if (noteIndex !== -1)
             {
-                noteList.splice(noteIndex, 1);
+                defaultProject.splice(noteIndex, 1);
                 UpdateLocalStorage();
                 RenderNotes(); 
             }

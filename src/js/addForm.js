@@ -1,6 +1,6 @@
 import { AddNoteToArray, UpdateLocalStorage} from "./addNote";
-import AddNote from "./addNote";
-import { noteList } from "./main";
+import AddNoteToDom from "./addNote";
+import { defaultProject } from "./main";
 import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg"
 import EditNote from "./EditNote";
 import RenderNotes from "./RenderNotes"; // gege

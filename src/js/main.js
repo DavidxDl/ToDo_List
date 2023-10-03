@@ -8,16 +8,21 @@ import imgEditIcon from "/src/imgs/EditIcon.png";
 import * as bootstrap from 'bootstrap';
 import AddForm from './addForm';
 import RenderNotes from './RenderNotes';
-import AddNote from './addNote';
+import AddNoteToDom from './addNote';
 import { AddNoteToArray } from './addNote';
 import { getTime } from './addForm';
 
 
 document.querySelector(".addIcon").src = buttonIcon;
 const notes = document.querySelector(".notes")
-const addNoteBtn = document.getElementById("addNote")
 
-export var noteList = [];
+const addNoteBtn = document.getElementById("addNote")
+const modal = document.querySelector("[data-modal")
+const closeModalBtn = document.querySelector("[data-close-modal]")
+const projectsBtn = document.querySelector("[data-open-modal]")
+const defaultProjectBtn = document.getElementById("defaultProject");
+
+export var defaultProject = [];
 RenderNotes();
 
 
@@ -34,11 +39,24 @@ addNoteBtn.addEventListener("click", (e) =>
         if(form.textarea.value === '') return;
 
         let priority = document.querySelector('input[name="priority"]:checked')?.value || "blue";
-        let id = AddNoteToArray(form.titleInput.value, form.textarea.value, priority);
-        AddNote(form.titleInput.value, form.textarea.value, priority, getTime(), id);
+        let id = AddNoteToArray(form.titleInput.value, form.textarea.value, priority, "defaultProject", defaultProject);
+        AddNoteToDom(form.titleInput.value, form.textarea.value, priority, getTime(), id);
         notes.removeChild(form.formNote);
-        console.log(noteList);
+        console.log(defaultProject);
   
     })
+})
+
+projectsBtn.addEventListener("click", (e) => {
+    modal.showModal()
+
+    closeModalBtn.addEventListener("click", () => {
+        modal.close()
+});
+    })
+
+defaultProjectBtn.addEventListener("click", () => {
+    modal.close();
+    RenderNotes("defaultProject");
 })
                                                         

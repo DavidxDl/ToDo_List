@@ -1,4 +1,4 @@
-import { noteList } from "./main";
+import { defaultProject } from "./main";
 import AddForm from "./addForm";
 import { UpdateLocalStorage } from "./addNote";
 import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg";
@@ -7,17 +7,17 @@ import Note from "./TodoNoteClass";
 
 export default function EditNote(title, description, priority, id)
 {
-    const noteIndex = noteList.findIndex(note => note.id === id);
+    const noteIndex = defaultProject.findIndex(note => note.id === id);
     if(noteIndex !== -1){
 
         console.log(id)
         console.log(noteIndex)
-        console.log(noteList[noteIndex])
+        console.log(defaultProject[noteIndex])
         
-        noteList[noteIndex].title = title
-        noteList[noteIndex].info = description
-        noteList[noteIndex].priority = priority
-        console.log(noteList[noteIndex])
+        defaultProject[noteIndex].title = title
+        defaultProject[noteIndex].info = description
+        defaultProject[noteIndex].priority = priority
+        console.log(defaultProject[noteIndex])
         UpdateLocalStorage();
         RenderNotes();                      
     }
