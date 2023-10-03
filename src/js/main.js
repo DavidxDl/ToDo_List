@@ -25,7 +25,8 @@ const projectsBtn = document.querySelector("[data-open-modal]")
 const defaultProjectBtn = document.getElementById("defaultProject");
 
 export var defaultProject = [];
-RenderNotes();
+export var currentProject = "defaultProject"
+RenderNotes(currentProject);
 
 
 
@@ -41,7 +42,7 @@ addNoteBtn.addEventListener("click", (e) =>
         if(form.textarea.value === '') return;
 
         let priority = document.querySelector('input[name="priority"]:checked')?.value || "blue";
-        let id = AddNoteToArray(form.titleInput.value, form.textarea.value, priority, "defaultProject");
+        let id = AddNoteToArray(form.titleInput.value, form.textarea.value, priority, currentProject);
         AddNoteToDom(form.titleInput.value, form.textarea.value, priority, getTime(), id);
         notes.removeChild(form.formNote);
         console.log(defaultProject);
@@ -59,7 +60,8 @@ projectsBtn.addEventListener("click", (e) => {
 
 defaultProjectBtn.addEventListener("click", () => {
     modal.close();
-    RenderNotes("defaultProject");
+    currentProject = "defaultProject"
+    RenderNotes(currentProject);
 })
 
 newProjectBtn.addEventListener("click", createProjectForm)

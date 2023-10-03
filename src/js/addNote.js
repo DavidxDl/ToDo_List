@@ -1,7 +1,7 @@
 import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg";
 import imgRemoveIcon from "/src/imgs/remove.png";
 import imgEditIcon from "/src/imgs/EditIcon.png";
-import { defaultProject } from "./main";
+import { currentProject, defaultProject } from "./main";
 import RenderNotes from "./RenderNotes";
 import Note from "./TodoNoteClass";
 import AddForm, { getTime } from "./addForm";
@@ -63,8 +63,7 @@ export default function AddNoteToDom(title, description, priority="blue", date, 
 
 export function AddNoteToArray(title, description, priority, projectName)
 {
-    let projectArray = []
-    projectArray = JSON.parse(localStorage.getItem(projectName));
+    let projectArray = JSON.parse(localStorage.getItem(projectName));
     const note = new Note(title, description, priority, getTime());
     projectArray.push(note);
     UpdateLocalStorage(projectName, projectArray);
@@ -80,7 +79,7 @@ function CreateIcon(id, clss, src, btn){
     btn.append(icon);
 }
 
-export function UpdateLocalStorage(projectName = "defaultProject", projectArray = defaultProject)
+export function UpdateLocalStorage(projectName = "defaultProject", projectArray)
 {
     localStorage.setItem(projectName, JSON.stringify(projectArray));
 }
@@ -104,13 +103,14 @@ function RemoveAndUpdate(id)
          if(note)
         {
             notes.removeChild(note);
-    
-            const noteIndex = defaultProject.findIndex(nodeNote => nodeNote.id === id);
+            
+            let projectArray = JSON.parse(localStorage.getItem(currentProject));
+            const noteIndex = projectArray.findIndex(nodeNote => nodeNote.id === id);
             if (noteIndex !== -1)
             {
-                defaultProject.splice(noteIndex, 1);
-                UpdateLocalStorage();
-                RenderNotes(); 
+                projectArray.splice(noteIndex, 1);
+                UpdateLocalStorage(currentProject, projectArray);
+                RenderNotes(currentProject); 
             }
         }
     }, 500);

@@ -1,4 +1,4 @@
-import { defaultProject } from "./main";
+import { currentProject } from "./main";
 import AddForm from "./addForm";
 import { UpdateLocalStorage } from "./addNote";
 import noteImage from "/src/imgs/janita-sumeiko-ZK1WQDMQvik-unsplash.jpg";
@@ -7,19 +7,22 @@ import Note from "./TodoNoteClass";
 
 export default function EditNote(title, description, priority, id)
 {
-    const noteIndex = defaultProject.findIndex(note => note.id === id);
+    let projectArray = JSON.parse(localStorage.getItem(currentProject));
+    console.log("this is the projectArray of the current project" + projectArray)
+
+    const noteIndex = projectArray.findIndex(note => note.id === id);
     if(noteIndex !== -1){
 
         console.log(id)
-        console.log(noteIndex)
-        console.log(defaultProject[noteIndex])
+        console.log("note index: " + noteIndex)
+        console.log("note at index : " + noteIndex + " :" + projectArray[noteIndex])
         
-        defaultProject[noteIndex].title = title
-        defaultProject[noteIndex].info = description
-        defaultProject[noteIndex].priority = priority
-        console.log(defaultProject[noteIndex])
-        UpdateLocalStorage();
-        RenderNotes();                      
+        projectArray[noteIndex].title = title
+        projectArray[noteIndex].info = description
+        projectArray[noteIndex].priority = priority
+        console.log(projectArray[noteIndex])
+        UpdateLocalStorage(currentProject, projectArray);
+        RenderNotes(currentProject);                      
     }
 }
 
@@ -36,9 +39,8 @@ export function EditForm(title, description, priority, id)
     editForm.addBtn.addEventListener("click", (e) =>{
         e.preventDefault()
         if(editForm.textarea.value === '') return;
-
+        console.log("HEY SUP")
         let priority = document.querySelector('input[name="priority"]:checked')?.value || "blue";
-        notes.removeChild(editForm.formNote);
         EditNote(editForm.titleInput.value, editForm.textarea.value, priority, id);
 
     

@@ -1,4 +1,4 @@
-import { defaultProject } from "./main";
+import { defaultProject, currentProject } from "./main";
 import AddNoteToDom from "./addNote";
 
 
