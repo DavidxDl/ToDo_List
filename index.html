@@ -17,8 +17,18 @@
         <div class="content">
             <main>
                 <div class="notes">
-                    
+                    <h1>Hello Bro~</h1>
                 </div>
+                <dialog class="Modal" data-modal>
+                    <h2 class="projectsTitle">Projects</h1>
+                    <div class="Projects">
+                        <div class="div">
+                            <a href="#" class="projectItem" id="defaultProject">Default Project</a>
+                        </div>
+                    </div>
+                    <button data-close-modal class="btn  btn-primary closeModalBtn">Close Projects</button>
+                    <button data-close-modal class="btn  btn-primary newProjectBtn">Add Project</button>
+                </dialog>
         </div>
                 <div class="dropdown">
                     <button class="btn  btn-primary dropdown-toggle" id="addBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,7 +36,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a id="addNote" class="dropdown-item" href="#">Add Note</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a id="projectsBtn" class="dropdown-item" data-open-modal href="#">Projects</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </div>
