@@ -34,6 +34,25 @@ export default function RenderNotes(projectName = "defaultProject")
     }
 
     else{
+        let newProjectArray = []
+
+        if(!localStorage.getItem(projectName))
+        {
+            
+            localStorage.setItem(projectName, JSON.stringify(newProjectArray))
+        }
+        else
+        {
+            newProjectArray = JSON.parse(localStorage.getItem(currentProject))
+        }
+
+        notes.innerHTML = ''
+
+        newProjectArray.forEach(note => {
+            console.log(note)
+            console.log(note.id, note.info, note.priority)
+            AddNoteToDom(note.title, note.info, note.priority, note.time, note.id);
+        })
 
     }
 }

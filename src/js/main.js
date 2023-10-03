@@ -11,7 +11,7 @@ import RenderNotes from './RenderNotes';
 import AddNoteToDom from './addNote';
 import { AddNoteToArray } from './addNote';
 import { getTime } from './addForm';
-import { createProjectForm } from './projects';
+import { createProjectForm, RenderProjects } from './projects';
 
 
 document.querySelector(".addIcon").src = buttonIcon;
@@ -25,6 +25,7 @@ const projectsBtn = document.querySelector("[data-open-modal]")
 const defaultProjectBtn = document.getElementById("defaultProject");
 
 export var defaultProject = [];
+export var projectsList = []
 export var currentProject = "defaultProject"
 RenderNotes(currentProject);
 
@@ -52,7 +53,7 @@ addNoteBtn.addEventListener("click", (e) =>
 
 projectsBtn.addEventListener("click", (e) => {
     modal.showModal()
-
+    RenderProjects()
     closeModalBtn.addEventListener("click", () => {
         modal.close()
 });
