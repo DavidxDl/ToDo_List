@@ -43,23 +43,26 @@ export function RenderProjects()
     {
         projectsList = JSON.parse(localStorage.getItem("Projects"))
     }
-    projectsDiv.innerHTML = ''
-    const modal = document.querySelector("[data-modal")
+    projectsDiv.innerHTML = '';
+    const modal = document.querySelector("[data-modal");
 
     projectsList.forEach(project => {
-        const projectAncher = document.createElement("a")
+        const projectAncher = document.createElement("a");
 
-        projectAncher.innerText = project
-        projectAncher.classList.add("projectItem") 
-        projectAncher.id = project
-        projectAncher.href = "#"
+        projectAncher.innerText = project;
+        projectAncher.classList.add("projectItem");
+        projectAncher.id = project;
+        projectAncher.href = "#";
 
         projectsDiv.append(projectAncher)
 
         projectAncher.addEventListener("click", () => {
-            modal.close()
-            currentProject = project
-            RenderNotes(currentProject)
+            const webTitle = document.getElementById("logoText");
+            webTitle.innerText = project;
+            modal.close();
+            currentProject = project;
+
+            RenderNotes(currentProject);
         })
     })
 

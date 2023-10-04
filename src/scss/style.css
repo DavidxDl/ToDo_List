@@ -168,7 +168,7 @@ main{
     height: auto;
     text-align: center;
     box-shadow: 1px 2px 4px 0px #000000;
-    text-shadow: -1px 2px 5px black;
+    text-shadow: 0px 1px 2px black;
     
    
 }
@@ -176,9 +176,11 @@ main{
 .card-title{
     text-shadow: 0px 1px 2px black;
     font-size: 30px;
+    font-weight: 900;
 }
 .card-text{
     margin-bottom: auto;
+    font-weight: 900;
 }
 .card img{
     height: 300px;
